@@ -1,184 +1,83 @@
-'use client'
-import { ourCoursedData } from "@/components/Common/Jsondata";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
-import { FaFacebook, FaInstagram, FaXTwitter, FaYoutube } from "react-icons/fa6";
-import ToggleTheme from "../ToogleTheme";
-import { FaWhatsapp } from "react-icons/fa";
+import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 
-const Footer = () => {
-  const pathname = usePathname();
-  if (pathname.match(/^\/admin(\/.*)?$/)) {
-    return null;
-  }
+const footerData = {
+  companyName: "Manage Expenses",
+  address: "1st floor, Sector-15 , Noida, Uttar Pradesh",
+  addressLink: "http://maps.google.com/?q=Sector-15 , Noida, Uttar Pradesh",
+  phoneNumbers: ["+918505921813"],
+  weekdayHours: "Monday to Friday: 9am - 8pm",
+  weekendHours: "Weekend: 10am - 3pm",
+  socialMediaLinks: [
+    { label: "Facebook", link: "/", icon: <Facebook className="text-3xl" /> },
+    { label: "Instagram", link: "/", icon: <Instagram className="text-3xl" /> },
+    { label: "Twitter", link: "/", icon: <Twitter className="text-3xl" /> },
+    { label: "YouTube", link: "/", icon: <Youtube className="text-3xl" /> }
+  ],
+  courseCategory: "Our courses",
+  courses: [
+    { title: "Course 1", link: "/" },
+    { title: "Course 2", link: "/" },
+    { title: "Course 3", link: "/" },
+    { title: "Course 4", link: "/" },
+  ],
+  companySectionTitle: "Company",
+  companyLinks: [
+    { label: "About", url: "/" },
+    { label: "Meet the Team", url: "/" },
+    { label: "Accounts Review", url: "/" }
+  ],
+  legalLinks: [
+    { label: "Terms & Conditions", url: "/" },
+    { label: "Privacy Policy", url: "/" },
+    { label: "Cookies", url: "/" }
+  ]
+};
+
+const App = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white lg:grid lg:grid-cols-5 relative">
-      <div className="relative block h-32 lg:col-span-2 lg:h-full">
-        <Image
-          src="/assets/library.jpg"
-          alt="footer"
-          className="absolute inset-0 h-full w-full object-cover"
-          fill
-        />
-      </div>
-
-      <div className="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8 text-gray-700">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-          <div>
-            <h2 className="text-3xl font-medium uppercase">Crystal Pathshala</h2>
-            <address>
-              <a target="_blank"
-                href="http://maps.google.com/?q=Crystal Pathshala, Chahat complex, Sector-15 , Noida, Uttar Pradesh"
-                rel="noopener noreferrer"
-                referrerPolicy='no-referrer'
-              >
-                1st floor, Chahat complex, Sector-15 , Noida, Uttar Pradesh
-              </a>
-            </address>
-            <div className="mt-5 ">
-              <span className="text-xs uppercase tracking-wide text-gray-500"> Call us </span>
-              <div className="flex items-center gap-4">
-                <a href="tel:+917503846834" className="block font-medium text-gray-900 hover:opacity-75">+91 7503846834</a>
-                <a href="tel:+917982398424" className="block font-medium text-gray-900 hover:opacity-75">+91 7982398424</a>
-              </div>
-            </div>
-
-
-            <ul className="mt-8 space-y-1 text-sm text-gray-700">
-              <li>Monday to Friday: 9am - 8pm</li>
-              <li>Weekend: 10am - 3pm</li>
-            </ul>
-
-
-            <ul className="mt-8 flex gap-6">
-              <li>
-                <a
-                  href="/"
-                  rel="noreferrer"
-                  target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
-                >
-                  <span className="sr-only">Facebook</span>
-
-                  <FaFacebook className="text-3xl" />
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="/"
-                  rel="noreferrer"
-                  target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
-                >
-                  <span className="sr-only">Instagram</span>
-
-                  <FaInstagram className="text-3xl" />
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="/"
-                  rel="noreferrer"
-                  target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
-                >
-                  <span className="sr-only">Twitter</span>
-
-                  <FaXTwitter className="text-3xl" />
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="/"
-                  rel="noreferrer"
-                  target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
-                >
-                  <span className="sr-only">GitHub</span>
-
-                  <FaYoutube className="text-3xl" />
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div>
-              <p className="font-medium text-gray-900">Our courses</p>
-
-              <ul className="mt-6 space-y-4 text-sm">
-                {ourCoursedData.map((course) => (
-                  <li key={course.id}>
-                    <Link href={course.link} className="text-gray-700 transition hover:opacity-75"> {course.title} </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <p className="font-medium text-gray-900 dark:text-gray-100">Company</p>
-
-              <ul className="mt-6 space-y-4 text-sm">
-                <li>
-                  <a href="/" className="text-gray-700 transition hover:opacity-75"> About </a>
-                </li>
-
-                <li>
-                  <a href="/" className="text-gray-700 transition hover:opacity-75"> Meet the Team </a>
-                </li>
-
-                <li>
-                  <a href="/" className="text-gray-700 transition hover:opacity-75"> Accounts Review </a>
-                </li>
-                <li>
-                  <ToggleTheme />
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-12 border-t border-gray-100 pt-12">
-          <div className="sm:flex sm:items-center sm:justify-between">
-            <ul className="flex flex-wrap gap-4 text-xs">
-              <li>
-                <a href="/" className="text-gray-500 transition hover:opacity-75"> Terms & Conditions </a>
-              </li>
-
-              <li>
-                <a href="/" className="text-gray-500 transition hover:opacity-75"> Privacy Policy </a>
-              </li>
-
-              <li>
-                <a href="/" className="text-gray-500 transition hover:opacity-75"> Cookies </a>
-              </li>
-            </ul>
-
-            <p className="mt-8 text-xs text-gray-500 sm:mt-0">
-              &copy; {currentYear}. Crystal Pathshala. All rights reserved.
-            </p>
-          </div>
-        </div>
-        <div className="fixed right-4 bottom-4 lg:bottom-10 lg:right-10 z-50">
-          <a
-            target="_blank"
-            href="https://api.whatsapp.com/send?phone=+917503846834&text=Hello%2C%20Sir!%20I%20hope%20you%20are%20doing%20well.%20I%20have%20a%20question%20regarding%20our%20Spoken%20English%20and%20Professional%20Skills%20training%20programs.%20Could%20you%20please%20provide%20more%20information%20about%20them?"
-            rel="noopener noreferrer"
-            referrerPolicy='no-referrer'
-          >
-            <FaWhatsapp className="text-5xl text-[#22CC66]" />
+    // <Footer data={footerData} />
+    <div className="border-t shadow">
+      <footer className="text-gray-600 body-font">
+        <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+          <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-10 h-10 text-white p-2 bg-gray-500 rounded-full" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span className="ml-3 text-xl">{footerData.companyName}</span>
           </a>
+          <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">&copy; {currentYear} —
+            <a href="https://twitter.com/knyttneve" className="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">{footerData.companyName}</a>
+          </p>
+          <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+            <a className="text-gray-500">
+              <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+              </svg>
+            </a>
+            <a className="ml-3 text-gray-500">
+              <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+              </svg>
+            </a>
+            <a className="ml-3 text-gray-500">
+              <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+              </svg>
+            </a>
+            <a className="ml-3 text-gray-500">
+              <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0" className="w-5 h-5" viewBox="0 0 24 24">
+                <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                <circle cx="4" cy="4" r="2" stroke="none"></circle>
+              </svg>
+            </a>
+          </span>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   );
 };
 
-export default Footer;
+export default App;

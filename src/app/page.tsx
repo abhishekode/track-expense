@@ -1,14 +1,11 @@
-import React from "react";
-import { Metadata } from "next";
-import { homeMetaData } from "@/constant/metadata";
-
-export const metadata: Metadata = { ...homeMetaData };
+import React from 'react'
 
 const Home = () => {
-  return <div className="bg-gray-50 text-gray-900">
-    <div className="min-h-screen">hello2</div>
-    <div className="min-h-screen">hello2</div>
-  </div>;
-};
+  return (
+    <div className='container mx-auto'>
+      <div className="h-screen">two</div>
+    </div>
+  )
+}
 
-export default Home;
+export default Home
