@@ -25,28 +25,39 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1>{loading ? "Processing" : "Login"}</h1>
-      <hr />
-
-      <label htmlFor="email">email</label>
-      <input
-        id="email"
-        type="text"
-        value={user.email}
-        onChange={(e) => setUser({ ...user, email: e.target.value })}
-        placeholder="email"
-      />
-      <label htmlFor="password">password</label>
-      <input
-        id="password"
-        type="password"
-        value={user.password}
-        onChange={(e) => setUser({ ...user, password: e.target.value })}
-        placeholder="password"
-      />
-      <button onClick={onLogin}>Submit</button>
-      <Link href="/signup">Visit signup page</Link>
+    <div className="flex flex-col max-w-2xl py-2">
+      <div className="border-b py-2 mb-5">
+        <h1 className="text-2xl font-semibold uppercase">{loading ? "Processing" : "Login"}</h1>
+      </div>
+      <div className="flex flex-col">
+        <label htmlFor="email" className="my-2">
+          email
+        </label>
+        <input
+          id="email"
+          type="text"
+          value={user.email}
+          onChange={(e) => setUser({ ...user, email: e.target.value })}
+          placeholder="email"
+          className="p-2 rounded"
+        />
+      </div>
+      <div className="flex flex-col">
+        <label htmlFor="password" className="my-2">
+          password
+        </label>
+        <input
+          id="password"
+          type="password"
+          value={user.password}
+          onChange={(e) => setUser({ ...user, password: e.target.value })}
+          placeholder="password"
+          className="p-2 rounded"
+        />
+      </div>
+      <button onClick={onLogin} className="py-2 px-4 border mt-8 rounded-md">
+        Submit
+      </button>
     </div>
   );
 }
